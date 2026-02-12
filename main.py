@@ -30,11 +30,13 @@ def filter_books(books):
         authors = book.get("author_name", [])
 
         if year and year > 2000:
-            filtered.append({
-                "title": title,
-                "author": authors[0] if authors else "Unknown",
-                "year": year
-            })
+            filtered.append(
+                {
+                    "title": title,
+                    "author": authors[0] if authors else "Unknown",
+                    "year": year,
+                }
+            )
 
     return filtered
 
@@ -44,12 +46,15 @@ def save_to_csv(books):
     Save filtered books to a CSV file.
     """
     with open("books.csv", mode="w", newline="", encoding="utf-8") as file:
-        writer = csv.DictWriter(file, fieldnames=["title", "year","author"])
+        writer = csv.DictWriter(file, fieldnames=["title", "author", "year"])
         writer.writeheader()
         writer.writerows(books)
 
 
 def main():
+    """
+    Main execution flow of the script.
+    """
     books = fetch_books()
     filtered_books = filter_books(books)
     save_to_csv(filtered_books)
