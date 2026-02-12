@@ -1,4 +1,6 @@
 import requests
+import csv
+
 
 def fetch_books():
     """
@@ -41,14 +43,18 @@ def save_to_csv(books):
     """
     Save filtered books to a CSV file.
     """
-    pass
+    with open("books.csv", mode="w", newline="", encoding="utf-8") as file:
+        writer = csv.DictWriter(file, fieldnames=["title", "year","author"])
+        writer.writeheader()
+        writer.writerows(books)
 
 
 def main():
     books = fetch_books()
     filtered_books = filter_books(books)
+    save_to_csv(filtered_books)
 
-    print(f"Filtered books count: {len(filtered_books)}")
+    print("Books saved to books.csv successfully.")
 
 
 if __name__ == "__main__":
