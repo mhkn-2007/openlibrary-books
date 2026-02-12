@@ -85,19 +85,15 @@ The script generates:
 books.csv
 ```
 
-### CSV Columns
 
-| Column | Description |
-|--------|-------------|
-| title  | Book title |
-| author | First listed author |
-| year   | First publish year (after 2000) |
+### Output Example
 
-### Example Row
+| title  | author | year |
+|--------|--------|------|
+| Clean Code | Robert C. Martin | 2008 |
+| Python | Martin Evans | 2018 |
+| Python Basics | Unknown | 2019 |
 
-```
-Clean Code, Robert C. Martin, 2008
-```
 
 ---
 
@@ -144,6 +140,12 @@ openlibrary-books/
 - Logging instead of print statements
 - Pagination handling for larger datasets
 - Unit testing
+
+---
+
+## ✒️ Author
+Mohammad Hasan Kamali Nikou
+[GitHub Profile](https://github.com/mhkn-2007)
 
 ---
 
