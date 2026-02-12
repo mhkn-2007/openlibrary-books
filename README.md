@@ -92,7 +92,7 @@ books.csv
 |--------|--------|------|
 | Clean Code | Robert C. Martin | 2008 |
 | Python | Martin Evans | 2018 |
-| Python Basics | Unknown | 2019 |
+| Python | Byron Francis | 2016 |
 
 
 ---
@@ -145,6 +145,7 @@ openlibrary-books/
 
 ## ✒️ Author
 Mohammad Hasan Kamali Nikou
+
 [GitHub Profile](https://github.com/mhkn-2007)
 
 ---

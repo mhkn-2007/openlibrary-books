@@ -1,1 +1,13 @@
 __pycache__/
+*.py[cod]
+
+books.csv
+
+venv/
+.env
+
+.vscode/
+*.code-workspace
+
+.DS_Store
+Thumbs.db
