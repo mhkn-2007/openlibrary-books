@@ -21,7 +21,20 @@ def filter_books(books):
     """
     Filter books published after the year 2000.
     """
-    pass
+    filtered = []
+    for book in books:
+        year = book.get("first_publish_year")
+        title = book.get("title")
+        authors = book.get("author_name", [])
+
+        if year and year > 2000:
+            filtered.append({
+                "title": title,
+                "author": authors[0] if authors else "Unknown",
+                "year": year
+            })
+
+    return filtered
 
 
 def save_to_csv(books):
@@ -32,10 +45,10 @@ def save_to_csv(books):
 
 
 def main():
-    """
-    Main execution flow of the script.
-    """
-    pass
+    books = fetch_books()
+    filtered_books = filter_books(books)
+
+    print(f"Filtered books count: {len(filtered_books)}")
 
 
 if __name__ == "__main__":
