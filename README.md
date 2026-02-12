@@ -1,6 +1,6 @@
 # 📚 OpenLibrary Books Fetcher
 
-A Python-based data extraction script that integrates with the OpenLibrary Search API to retrieve, filter, and export structured book data into CSV format.
+A Python script that fetches 50 books about "Python" from the OpenLibrary API, filters books published after 2000, and exports the results to a CSV file.
 
 ---
 
@@ -88,10 +88,10 @@ books.csv
 
 ### Output Example
 
-| title  | author | year |
+| title  | authors | year |
 |--------|--------|------|
-| Clean Code | Robert C. Martin | 2008 |
-| Python | Martin Evans | 2018 |
+| Python Cookbook | Alex Martelli; David Ascher; David M. Beazley; Brian K. Jones | 2002 |
+| Python Basics | David Amos; Dan Bader; Joanna Jablonski; Fletcher Heisler | 2021 |
 | Python | Byron Francis | 2016 |
 
 
@@ -145,7 +145,6 @@ openlibrary-books/
 
 ## ✒️ Author
 Mohammad Hasan Kamali Nikou
-
 [GitHub Profile](https://github.com/mhkn-2007)
 
 ---
