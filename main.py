@@ -1,8 +1,20 @@
+import requests
+
 def fetch_books():
     """
     Fetch books data from OpenLibrary API.
+    Returns a list of books.
     """
-    pass
+    url = "https://openlibrary.org/search.json?q=python&limit=50"
+
+    try:
+        response = requests.get(url)
+        response.raise_for_status()  # check for HTTP errors
+        data = response.json()
+        return data.get("docs", [])
+    except requests.exceptions.RequestException as e:
+        print(f"Error fetching data: {e}")
+        return []
 
 
 def filter_books(books):
