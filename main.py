@@ -1,35 +1,36 @@
 import requests
 import csv
+from typing import List, Dict, Any
 
 # Constant for the API URL
-API_URL = "https://openlibrary.org/search.json?q=python&limit=50"
+API_URL: str = "https://openlibrary.org/search.json?q=python&limit=50"
 
 
-def fetch_books():
+def fetch_books() -> List[Dict[str, Any]]:
     """
     Fetch books data from OpenLibrary API.
     Returns a list of books.
     """
     try:
-        response = requests.get(API_URL)
+        response: requests.Response = requests.get(API_URL)
         response.raise_for_status()  # Check for HTTP errors
-        data = response.json()
+        data: Dict[str, Any] = response.json()
         return data.get("docs", [])
     except requests.exceptions.RequestException as e:
         print(f"Error fetching data: {e}")
         return []
 
 
-def filter_books(books):
+def filter_books(books: List[Dict[str, Any]]) -> List[Dict[str, Any]]:
     """
     Filter books published after the year 2000 and format authors.
     Returns a list of dictionaries with keys: title, author, year.
     """
-    filtered = []
+    filtered: List[Dict[str, Any]] = []
     for book in books:
-        year = book.get("first_publish_year")
-        title = book.get("title")
-        authors = book.get("author_name", [])
+        year: Any = book.get("first_publish_year")
+        title: Any = book.get("title")
+        authors: List[str] = book.get("author_name", [])
 
         if year and year > 2000:
             filtered.append(
@@ -43,22 +44,24 @@ def filter_books(books):
     return filtered
 
 
-def save_to_csv(books):
+def save_to_csv(books: List[Dict[str, Any]]) -> None:
     """
     Save filtered books to a CSV file.
     """
     with open("books.csv", mode="w", newline="", encoding="utf-8") as file:
-        writer = csv.DictWriter(file, fieldnames=["title", "authors", "year"])
+        writer: csv.DictWriter = csv.DictWriter(
+            file, fieldnames=["title", "authors", "year"]
+        )
         writer.writeheader()
         writer.writerows(books)
 
 
-def main():
+def main() -> None:
     """
     Main execution flow of the script.
     """
-    books = fetch_books()
-    filtered_books = filter_books(books)
+    books: List[Dict[str, Any]] = fetch_books()
+    filtered_books: List[Dict[str, Any]] = filter_books(books)
     save_to_csv(filtered_books)
     print(f"Saved {len(filtered_books)} books to books.csv successfully.")
 
